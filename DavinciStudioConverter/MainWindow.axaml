@@ -1,0 +1,80 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Teste.MainWindow"
+        WindowStartupLocation="CenterScreen"
+        Width="500"
+        Height="300"
+        Title="DaVinci Resolve video converter"
+        CanResize="False">
+    <StackPanel>
+        <Label Margin="5">
+            Source Video
+        </Label>
+        <WrapPanel>
+            <TextBox
+                Name="TxtSourceFile"
+                Width="450"
+                Margin="5"
+            >
+            </TextBox>
+
+            <Button
+                Name="BtnSourceFile"
+                Margin="5"
+                Click="btnSourceFile_Click"
+            >
+                ...
+            </Button>
+        </WrapPanel>
+
+        <Label Margin="5">
+            Output
+        </Label>
+        <WrapPanel>
+            <TextBox
+                Name="TxtOutputPath"
+                Width="450"
+                Margin="5"
+            >
+            </TextBox>
+            <Button
+                Name="BtnOutputPath"
+                Margin="5"
+                Click="btnOutputPath_Click"
+            >
+                ...
+            </Button>
+        </WrapPanel>
+        <WrapPanel>
+            <CheckBox
+                Name="CkbAudio"
+                Margin="5">
+                Audio
+            </CheckBox>
+            <CheckBox
+                Name="CkbVideo"
+                Margin="5">
+                Video
+            </CheckBox>
+        </WrapPanel>
+        <WrapPanel>
+            <Label>
+                Tracks
+            </Label>
+            <TextBox
+                Name="TxtAudioTracks">
+            </TextBox>
+        </WrapPanel>
+        <WrapPanel
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center">
+            <Button
+                Name="BtnConverter"
+                Click="btnConverter_Click"
+                Margin="5">
+                Converter
+            </Button>
+        </WrapPanel>
+    </StackPanel>
+
+</Window>

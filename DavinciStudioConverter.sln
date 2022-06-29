@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DavinciStudioConverter", "DavinciStudioConverter\DavinciStudioConverter.csproj", "{D19E1327-BA46-485E-BEA1-51E0B609F319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBox", "MessageBox\MessageBox.csproj", "{CE6C61E5-BB7F-412E-991F-DA7383376A26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D19E1327-BA46-485E-BEA1-51E0B609F319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19E1327-BA46-485E-BEA1-51E0B609F319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D19E1327-BA46-485E-BEA1-51E0B609F319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D19E1327-BA46-485E-BEA1-51E0B609F319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE6C61E5-BB7F-412E-991F-DA7383376A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE6C61E5-BB7F-412E-991F-DA7383376A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE6C61E5-BB7F-412E-991F-DA7383376A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE6C61E5-BB7F-412E-991F-DA7383376A26}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC35E8F2-E538-4E78-8F73-857B5CC7D372}
+	EndGlobalSection
+EndGlobal
