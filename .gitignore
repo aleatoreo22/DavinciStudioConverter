@@ -25,9 +25,11 @@
 *.user
 *.dll
 *.cache
+*.json
 .vs/
 [Bb]in/
 [Oo]bj/
+[Dd]ebug/
 _UpgradeReport_Files/
 [Pp]ackages/
 
