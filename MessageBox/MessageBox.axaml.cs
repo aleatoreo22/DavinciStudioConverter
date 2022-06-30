@@ -26,7 +26,7 @@ namespace MessageBox
             AvaloniaXamlLoader.Load(this);
         }
 
-        public Task<MessageBoxResult> Show(string text, string title, MessageBoxButtons buttons, Window parent = null)
+        public Task<MessageBoxResult> Show(string text, string title, MessageBoxButtons buttons, Window? parent = null)
         {
             var msgbox = new MessageBox()
             {
