@@ -5,9 +5,8 @@ using Avalonia.Controls;
 using System.Threading.Tasks;
 using Avalonia.Interactivity;
 using System.Collections.Generic;
-using System.Data;
 
-namespace Teste
+namespace DavinciStudioConverter
 {
     public partial class MainWindow : Window
     {
@@ -25,7 +24,6 @@ namespace Teste
                 _applicationPath += "/bin/Debug/net6.0";
             _ffmpegPath = _applicationPath + "/ffmpeg";
         }
-
         private async Task<string?> SearchFile(List<FileDialogFilter>? filter = null)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -35,14 +33,12 @@ namespace Teste
             string[]? file = await fileDialog.ShowAsync(parent: this);
             return file?[0];
         }
-
         private async Task<string?> SearchPath()
         {
             OpenFolderDialog folderDialog = new OpenFolderDialog();
             string? path = await folderDialog.ShowAsync(parent: this);
             return path;
         }
-
         public async void btnSourceFile_Click(object sender, RoutedEventArgs e)
         {
             List<FileDialogFilter> filter = new List<FileDialogFilter>();
@@ -50,12 +46,10 @@ namespace Teste
                 filter.Add(item: new FileDialogFilter() { Name = item, Extensions = { item } });
             TxtSourceFile.Text = await SearchFile(filter);
         }
-
         public async void btnOutputPath_Click(object sender, RoutedEventArgs e)
         {
             TxtOutputPath.Text = await SearchPath();
         }
-
         public void txtAudioTracks_KeyUp(object sender, KeyEventArgs e)
         {
             string aux = "";
@@ -66,14 +60,13 @@ namespace Teste
                     if (Int32.Parse(s: item.ToString()) >= 0)
                         aux += item;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw;
                 }
             }
             TxtAudioTracks.Text = aux;
         }
-
         private bool ExecuteFfmpeg(string parameters)
         {
             try
@@ -88,12 +81,11 @@ namespace Teste
                 process.Start();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
         }
-
         private bool Converter()
         {
             string prefixCommand = " -i " + TxtSourceFile.Text;
@@ -122,25 +114,34 @@ namespace Teste
                 }
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }
         }
-
         public void btnConverter_Click(object sender, RoutedEventArgs e)
         {
             BtnConverter.IsEnabled = false;
+
+            if (ValidatePathIsSeted())
+            {
+                new MessageBox.MessageBox().Show("Source not selected!","DaVinci Resolve video converter",
+                    MessageBox.MessageBox.MessageBoxButtons.Ok);
+                return;
+            }
+            
             new MessageBox.MessageBox().Show(Converter() ? "Conclude!" : "Errors occurred.",
                 "DaVinci Resolve video converter", MessageBox.MessageBox.MessageBoxButtons.Ok);
             BtnConverter.IsEnabled = true;
         }
 
+        private bool ValidatePathIsSeted()
+        {
+            return TxtSourceFile.Text != null && TxtOutputPath.Text != null;
+        }
         private static bool DefineBool(bool? boolean)
         {
             return boolean ?? false;
         }
-
-
     }
 }

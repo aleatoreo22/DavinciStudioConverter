@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using System;
 
-namespace Teste
+namespace DavinciStudioConverter
 {
     internal class Program
     {

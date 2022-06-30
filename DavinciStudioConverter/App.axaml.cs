@@ -1,8 +1,9 @@
 using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Controls.ApplicationLifetimes;
 
-namespace Teste
+
+namespace DavinciStudioConverter
 {
     public partial class App : Application
     {
