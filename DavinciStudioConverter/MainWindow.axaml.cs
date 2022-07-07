@@ -20,8 +20,8 @@ namespace DavinciStudioConverter
         {
             InitializeComponent();
             _applicationPath = Directory.GetCurrentDirectory();
-            if (System.Diagnostics.Debugger.IsAttached)
-                _applicationPath += "/bin/Debug/net6.0";
+            //if (System.Diagnostics.Debugger.IsAttached)
+            //    _applicationPath += "/bin/Debug/net6.0";
             _ffmpegPath = _applicationPath + "/ffmpeg";
         }
         private async Task<string?> SearchFile(List<FileDialogFilter>? filter = null)
@@ -88,7 +88,7 @@ namespace DavinciStudioConverter
         }
         private bool Converter()
         {
-            string prefixCommand = " -i " + TxtSourceFile.Text;
+            string prefixCommand = " -i " + "\"" + TxtSourceFile.Text + "\"";
             try
             {
                 if (DefineBool(boolean: CkbAudio.IsChecked))
@@ -97,7 +97,7 @@ namespace DavinciStudioConverter
                     for (int i = 0; i < Int32.Parse(s: TxtAudioTracks.Text); i++)
                     {
                         aux += " -map 0:a:" + i + " "
-                            + TxtOutputPath.Text + "/audio" + i + ".wav";
+                            + "\"" + TxtOutputPath.Text + "/audio\"" + i + ".wav";
                     }
                     if (!ExecuteFfmpeg(parameters: prefixCommand + aux))
                     {
@@ -107,7 +107,7 @@ namespace DavinciStudioConverter
                 if (DefineBool(boolean: CkbVideo.IsChecked))
                 {
                     if (!ExecuteFfmpeg(parameters: prefixCommand + " -c:v mpeg4 -b:v 10M -map 0:v " +
-                        TxtOutputPath.Text + "/video.m4v"))
+                                                   "\"" + TxtOutputPath.Text + "/video.m4v\""))
                     {
                         throw new Exception(message: "There was an error converting the video.");
                     }
@@ -123,7 +123,7 @@ namespace DavinciStudioConverter
         {
             BtnConverter.IsEnabled = false;
 
-            if (ValidatePathIsSeted())
+            if (!ValidatePathIsSeted())
             {
                 new MessageBox.MessageBox().Show("Source not selected!","DaVinci Resolve video converter",
                     MessageBox.MessageBox.MessageBoxButtons.Ok);
