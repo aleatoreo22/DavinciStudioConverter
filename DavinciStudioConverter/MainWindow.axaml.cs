@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using System.Threading.Tasks;
 using Avalonia.Interactivity;
 using System.Collections.Generic;
+using Microsoft.VisualBasic;
 
 namespace DavinciStudioConverter
 {
@@ -91,6 +92,9 @@ namespace DavinciStudioConverter
             string prefixCommand = " -i " + "\"" + TxtSourceFile.Text + "\"";
             try
             {
+                if (!CreatePath(TxtOutputPath.Text))
+                    return false;
+                
                 if (DefineBool(boolean: CkbAudio.IsChecked))
                 {
                     string aux = "";
@@ -114,27 +118,26 @@ namespace DavinciStudioConverter
                 }
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                new MessageBox.MessageBox().Show(e.Message, 
+                    "DaVinci Resolve video converter", MessageBox.MessageBox.MessageBoxButtons.Ok);
+                return false;
             }
         }
         public void btnConverter_Click(object sender, RoutedEventArgs e)
         {
             BtnConverter.IsEnabled = false;
-
             if (!ValidatePathIsSeted())
             {
                 new MessageBox.MessageBox().Show("Source not selected!","DaVinci Resolve video converter",
                     MessageBox.MessageBox.MessageBoxButtons.Ok);
                 return;
             }
-            
             new MessageBox.MessageBox().Show(Converter() ? "Conclude!" : "Errors occurred.",
                 "DaVinci Resolve video converter", MessageBox.MessageBox.MessageBoxButtons.Ok);
             BtnConverter.IsEnabled = true;
         }
-
         private bool ValidatePathIsSeted()
         {
             return TxtSourceFile.Text != null && TxtOutputPath.Text != null;
@@ -142,6 +145,26 @@ namespace DavinciStudioConverter
         private static bool DefineBool(bool? boolean)
         {
             return boolean ?? false;
+        }
+        private bool CreatePath(string path)
+        {
+            try
+            {
+                if(Directory.Exists(path))
+                    return true;
+                string verificationPath = "";
+                foreach (var item in path.Split("/"))
+                {
+                    verificationPath += item + "/";
+                    if (!Directory.Exists(verificationPath))
+                        Directory.CreateDirectory(verificationPath);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
