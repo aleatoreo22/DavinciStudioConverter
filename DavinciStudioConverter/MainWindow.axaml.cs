@@ -80,6 +80,7 @@ namespace DavinciStudioConverter
                     RedirectStandardOutput = true
                 };
                 process.Start();
+                process.WaitForExit();
                 return true;
             }
             catch (Exception)
