@@ -14,15 +14,13 @@
             <TextBox
                 Name="TxtSourceFile"
                 Width="450"
-                Margin="5"
-            >
+                Margin="5">
             </TextBox>
 
             <Button
                 Name="BtnSourceFile"
                 Margin="5"
-                Click="btnSourceFile_Click"
-            >
+                Click="btnSourceFile_Click">
                 ...
             </Button>
         </WrapPanel>
@@ -34,14 +32,12 @@
             <TextBox
                 Name="TxtOutputPath"
                 Width="450"
-                Margin="5"
-            >
+                Margin="5">
             </TextBox>
             <Button
                 Name="BtnOutputPath"
                 Margin="5"
-                Click="btnOutputPath_Click"
-            >
+                Click="btnOutputPath_Click">
                 ...
             </Button>
         </WrapPanel>

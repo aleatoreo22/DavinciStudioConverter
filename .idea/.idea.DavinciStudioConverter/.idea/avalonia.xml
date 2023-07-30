@@ -5,6 +5,7 @@
       <map>
         <entry key="DavinciStudioConverter/App.axaml" value="DavinciStudioConverter/DavinciStudioConverter.csproj" />
         <entry key="DavinciStudioConverter/MainWindow.axaml" value="DavinciStudioConverter/DavinciStudioConverter.csproj" />
+        <entry key="MessageBox/MessageBox.axaml" value="DavinciStudioConverter/DavinciStudioConverter.csproj" />
       </map>
     </option>
   </component>
